@@ -1,7 +1,9 @@
+import county_demographics
 import data
 import build_data
 import unittest
 
+import hw3
 
 # These two values are defined to support testing below. The
 # data within these structures should not be modified. Doing
@@ -180,6 +182,11 @@ class TestCases(unittest.TestCase):
 
     # Part 1
     # test population_total
+    def test_population_total(self):
+        input1 = county_demographics.get_report()
+        expected = 318857056
+        actual = hw3.population_total(input1)
+        self.assertEqual(expected, actual)
 
     # Part 2
     # test filter_by_state
