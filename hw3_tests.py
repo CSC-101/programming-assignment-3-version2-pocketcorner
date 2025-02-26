@@ -182,7 +182,7 @@ class TestCases(unittest.TestCase):
 
     # Part 1
     # test population_total
-    def test_population_total(self):
+    def test_population_total_1(self):
         input1 = county_demographics.get_report()
         expected = 318857056
         actual = hw3.population_total(input1)
@@ -190,9 +190,29 @@ class TestCases(unittest.TestCase):
 
     # Part 2
     # test filter_by_state
+    def test_filter_by_state_1(self):
+        input1 = county_demographics.get_report()
+        input2 = 'CA'
+        expected = [] #WHAT DO I DO HERE...
+        actual = hw3.filter_by_state(input1, input2)
+        self.assertEqual(expected, actual)
 
     # Part 3
-    # test population_by_education
+    def test_population_by_education_1(self):
+        input1 = county_demographics.get_report()
+        input2 = "lajfgh;asff"
+        expected = 0
+        actual = hw3.population_by_education(input1, input2)
+        self.assertEqual(expected, actual)
+
+    def test_population_by_education_2(self):
+        input1 = reduced_data
+        input2 = "Bachelor's Degree or Higher"
+        expected = 195114.091
+        actual = hw3.population_by_education(input1, input2)
+        self.assertAlmostEqual(expected, actual)
+
+
     # test population_by_ethnicity
     # test population_below_poverty_level
 

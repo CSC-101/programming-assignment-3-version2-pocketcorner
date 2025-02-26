@@ -3,25 +3,36 @@ import data
 import county_demographics
 
 #Part 1
-#Comment
-def population_total(lst:list[data.CountyDemographics]) -> int:
+# This function pulls the (2014) population data from a list of counties and sum them up as a single integer.
+def population_total(lst:list[build_data.CountyDemographics]) -> int:
     pop_total = 0
     for attrib in lst:
         pop_total += attrib['Population']['2014 Population']
-    print(pop_total)
     return pop_total
 
-population_total(county_demographics.get_report())
 
 #Part 2
 #Comment
-# def filter_by_state(lst:list[data.CountyDemographics], abrv:str) -> list[data.CountyDemographics]:
-#
+def filter_by_state(lst:list[build_data.CountyDemographics], abrv:str) -> list[build_data.CountyDemographics]:
+    key_lst = []
+    for county in lst:
+        if county.state == abrv:
+            key_lst.append(county)
+    print(key_lst)
+    return key_lst
+
+
 #
 # #Part 3
 # #Comment
-# def population_by_education(lst:list[data.CountyDemographics], edu_key:str) -> float:
-#
+def population_by_education(lst:list[build_data.CountyDemographics], edu_key:str) -> float:
+    pop_edu = 0
+    for county in lst:
+        if edu_key in county.education:
+            pop_edu += county.education[edu_key]/100 * county.population['2014 Population']
+    return pop_edu
+
+
 # def population_by_ethnicity(lst:list[data.CountyDemographics], eth_key:str) -> float:
 #
 # def population_below_poverty_level(lst:list[data.CountyDemographics]) -> float:
