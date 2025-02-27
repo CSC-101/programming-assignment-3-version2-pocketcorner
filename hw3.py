@@ -14,7 +14,7 @@ def population_total(lst:list[build_data.CountyDemographics]) -> int:
 
 
 #Part 2
-#Comment
+#Function takes a list of County Data, and will output a new list of counties from the specified state abbreviation
 def filter_by_state(lst:list[build_data.CountyDemographics], abrv:str) -> list[build_data.CountyDemographics]:
     key_lst = []
     for county in lst:
@@ -24,9 +24,11 @@ def filter_by_state(lst:list[build_data.CountyDemographics], abrv:str) -> list[b
     return key_lst
 
 
-#
+
 # #Part 3
-# #Comment
+# Function takes the percentage of the specified education level,
+# multiplies it by the 2014 population of each county from the list,
+# then adds them all together to get the total population of people with that education level in all the counties.
 def population_by_education(lst:list[build_data.CountyDemographics], edu_key:str) -> float:
     pop_edu = 0
     for county in lst:
@@ -34,6 +36,9 @@ def population_by_education(lst:list[build_data.CountyDemographics], edu_key:str
             pop_edu += county.education[edu_key]/100 * county.population['2014 Population']
     return pop_edu
 
+# Function takes the percentage of the specified ethnic category,
+# multiplies it by the 2014 population of each county from the list,
+# then adds them all together to get the total population of people in that ethnicity category in all the counties.
 def population_by_ethnicity(lst:list[build_data.CountyDemographics], eth_key:str) -> float:
     pop_eth = 0
     for county in lst:
@@ -41,6 +46,9 @@ def population_by_ethnicity(lst:list[build_data.CountyDemographics], eth_key:str
             pop_eth += county.ethnicities[eth_key]/100 * county.population['2014 Population']
     return pop_eth
 
+# Function takes the percentage of those under the national poverty level,
+# multiplies it by the 2014 population of each county from the list,
+# then adds them all together to get the total population of people below the poverty line in all the counties.
 def population_below_poverty_level(lst:list[build_data.CountyDemographics]) -> float:
     pop_eth = 0
     for county in lst:
@@ -49,19 +57,21 @@ def population_below_poverty_level(lst:list[build_data.CountyDemographics]) -> f
 
 
 # #Part 4
-# #Comment
+# Function uses the specified education population, divides it by the total population of the county list, and gives a decimal representation of the percent.
 def percent_by_education(lst:list[build_data.CountyDemographics], edu_key:str) -> float:
     tot_pop = population_total(lst)
     edu_pop = population_by_education(lst, edu_key)
     percent_edu = edu_pop/tot_pop
     return percent_edu
 
+# Function uses the specified ethnicity population, divides it by the total population of the county list, and gives a decimal representation of the percent.
 def percent_by_ethnicity(lst:list[data.CountyDemographics], eth_key:str) -> float:
     tot_pop = population_total(lst)
     eth_pop = population_by_ethnicity(lst, eth_key)
     percent_eth = eth_pop/tot_pop
     return percent_eth
 
+# Function uses population under the poverty line, divides it by the total population of the county list, and gives a decimal representation of the percent.
 def percent_below_poverty_level(lst: list[data.CountyDemographics]) -> float:
     tot_pop = population_total(lst)
     pov_pop = population_below_poverty_level(lst)
