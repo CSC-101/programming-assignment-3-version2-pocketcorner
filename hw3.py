@@ -80,7 +80,7 @@ def percent_below_poverty_level(lst: list[data.CountyDemographics]) -> float:
 
 
 # #Part 5
-# #Comment
+# Each function creates a list of counties with a value greater than or less than the specified threshold of the specified key.
 def education_greater_than(lst:list[build_data.CountyDemographics], edu_key:str, thresh:float) -> list[data.CountyDemographics]:
     great_list = []
     for county in lst:
