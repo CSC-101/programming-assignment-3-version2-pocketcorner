@@ -181,17 +181,22 @@ class TestCases(unittest.TestCase):
     pass
 
     # Part 1
-    # test population_total
     def test_population_total_1(self):
-        input1 = county_demographics.get_report()
+        input1 = build_data.get_data()
         expected = 318857056
         actual = hw3.population_total(input1)
         self.assertEqual(expected, actual)
 
+    def test_population_total_2(self):
+        input1 = reduced_data
+        expected = 655813
+        actual = hw3.population_total(input1)
+        self.assertEqual(expected, actual)
+
+
     # Part 2
-    # test filter_by_state
     def test_filter_by_state_1(self):
-        input1 = county_demographics.get_report()
+        input1 = build_data.get_data()
         input2 = 'CA'
         expected = [] #WHAT DO I DO HERE...
         actual = hw3.filter_by_state(input1, input2)
@@ -199,7 +204,7 @@ class TestCases(unittest.TestCase):
 
     # Part 3
     def test_population_by_education_1(self):
-        input1 = county_demographics.get_report()
+        input1 = build_data.get_data()
         input2 = "lajfgh;asff"
         expected = 0
         actual = hw3.population_by_education(input1, input2)
@@ -218,12 +223,50 @@ class TestCases(unittest.TestCase):
 
     # Part 4
     # test percent_by_education
+    def test_percent_by_education_1(self):
+        input1 = build_data.get_data()
+        input2 = "lajfgh;asff"
+        expected = 0
+        actual = hw3.percent_by_education(input1, input2)
+        self.assertEqual(expected, actual)
     # test percent_by_ethnicity
     # test percent_below_poverty_level
 
     # Part 5
     # test education_greater_than
+    def test_education_greater_than_1(self):
+        input1 = build_data.get_data()
+        input2 = "lajfgh;asff"
+        input3 = 0.03221
+        expected = []
+        actual = hw3.education_greater_than(input1, input2,input3)
+        self.assertEqual(expected, actual)
+
+    def test_education_greater_than_2(self):
+        input1 = build_data.get_data()
+        input2 = "Bachelor's Degree or Higher"
+        input3 = 60.0 #in percents
+        expected = "Wrong"
+        actual = hw3.education_greater_than(input1, input2,input3)
+        self.assertEqual(expected, actual)
+
     # test education_less_than
+    def test_education_less_than_1(self):
+        input1 = build_data.get_data()
+        input2 = "lajfgh;asff"
+        input3 = 0.03221
+        expected = []
+        actual = hw3.education_greater_than(input1, input2,input3)
+        self.assertEqual(expected, actual)
+
+    def test_education_less_than_2(self):
+        input1 = build_data.get_data()
+        input2 = "Bachelor's Degree or Higher"
+        input3 = 60.0 #in percents
+        expected = "Wrong"
+        actual = hw3.education_greater_than(input1, input2,input3)
+        self.assertEqual(expected, actual)
+
     # test ethnicity_greater_than
     # test ethnicity_less_than
     # test below_poverty_level_greater_than
